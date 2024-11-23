@@ -59,6 +59,10 @@ export async function buscarCategorias() {
     {
         "id": 13,
         "name": "Acomodação 568"
+    },
+    {
+        "id": 14,
+        "name": "Acomodação 215"
     }
 ]
 }
