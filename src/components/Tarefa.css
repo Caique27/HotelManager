@@ -1,0 +1,45 @@
+.Tarefa-section{
+    border: 1px solid;
+    border-radius: 0.5rem;
+    border-color: #90d3ff;
+    background-color: #24333bf2;
+    flex-grow: 1;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    margin-top: 0.5rem ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between  ;
+    
+}
+.Tarefa-titulo{
+    margin-left: 1rem;
+    display: flex;
+}
+.Tarefa-amount{
+    margin-top: 0.35rem;
+    margin-left: 0.3rem;
+}
+.Tarefa-date{
+    margin-top: -0.8rem;
+    margin-left: 0.95rem; 
+}
+.Tarefa-buttons{
+   margin-top: 0.8rem;
+   margin-right: 1rem;
+}
+.Tarefa-description{
+   font-size: 1rem; 
+}
+.dialog-style{
+    background-color: #1B262C;
+    color: #BBE1FA;
+  }
+  .Tarefa-dialog-buttons{
+    margin-left: 8rem;
+    margin-top: 1rem;
+  }
+
+.Tarefa-done{
+    text-decoration:line-through ;
+}

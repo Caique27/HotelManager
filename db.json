@@ -1,0 +1,52 @@
+{
+  "categorias": [
+    {
+      "nome": "Livros",
+      "tarefas": [
+        {
+          "title": "hgjdghhtfsdafasdfhhahahb",
+          "status": "undone",
+          "category": "Livros",
+          "id": 3
+        },
+        {
+          "title": "1984",
+          "status": "undone",
+          "category": "Livros",
+          "id": 4
+        },
+        {
+          "title": "fsdafasdf",
+          "status": "undone",
+          "category": "Livros",
+          "id": 1
+        },
+        {
+          "title": "fsdafasdfhhahah",
+          "status": "undone",
+          "category": "Livros",
+          "id": 2
+        }
+      ],
+      "id": 1
+    },
+    {
+      "nome": "asdfdsafasd",
+      "tarefas": [
+        {
+          "title": "hgjdghhtfsdafasdfhhahahbeeeeeeeeee",
+          "status": "undone",
+          "category": "Provas",
+          "id": 2
+        },
+        {
+          "title": "hahh",
+          "status": "done",
+          "category": "Provas",
+          "id": 3
+        }
+      ],
+      "id": 2
+    }
+  ]
+}
