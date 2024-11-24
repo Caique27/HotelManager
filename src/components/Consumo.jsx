@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "./Tarefa.css";
-import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
+import "./Consumo.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
 	Tooltip,
@@ -10,38 +9,37 @@ import EditIcon from "@mui/icons-material/Edit";
 import RenameDialog from "./Dialogs/RenameDialog";
 import ExcludeDialog from "./Dialogs/ExcludeDialog";
 
-function Tarefa({ data, deleteCategoria, renameCategoria, tarefaId }) {
+function Consumo({ data, deleteConsumo, changeQuantidade, consumoId }) {
 	const [openDialog, setOpenDialog] = useState(false);
-	console.log(data.status);
 	return (
-		<section className="Tarefa-section">
+		<section className="Consumo-section">
 			<div>
 				<h1
 					className={
-			      	"Tarefa-titulo"
+			      	"Consumo-titulo"
 					}
 				>
-					{data.title}
-					<h1 className="Tarefa-description Tarefa-amount"> (5 unidades)</h1>
+					{data.nome}
+					<h1 className="Consumo-description Consumo-amount"> ({data.quantidade} unidades)</h1>
 				</h1>
-				<h2 className="Tarefa-description Tarefa-date">
-				11/01/2024 18:44	
+				<h2 className="Consumo-description Consumo-date">
+				{`${data.dia.split('T')[0]} ${data.horario}`}
 				</h2>
 			</div>
 
-			<div className="Tarefa-buttons">
-				<Tooltip title="Excluir Tarefa" arrow>
+			<div className="Consumo-buttons">
+				<Tooltip title="Alterar Quantidade" arrow>
 					<IconButton
 							color="fourth"
 							onClick={() => {
-								setOpenDialog("rename");
+								setOpenDialog("change");
 							}}
 						>
 							<EditIcon />
 					</IconButton>
 				</Tooltip>
 				
-				<Tooltip title="Excluir Tarefa" arrow>
+				<Tooltip title="Excluir Consumo" arrow>
 					<IconButton
 						color="fourth"
 						onClick={() => {
@@ -57,16 +55,18 @@ function Tarefa({ data, deleteCategoria, renameCategoria, tarefaId }) {
 				closeDialog={() => {
 					setOpenDialog(false);
 				}}
-				deleteCategoria={deleteCategoria}
+				deleteConsumo={deleteConsumo}
+				idConsumo={consumoId}
 			/>
 			<RenameDialog
-				open={openDialog == 'rename'}
+				open={openDialog == 'change'}
 				closeDialog={() => {
 					setOpenDialog(false);
 				}}
-				renameCategoria={renameCategoria}
-				idCategoria={1}
-				mensagem={'message'}	
+				quantidade = {data.quantidade}
+				changeQuantidade={changeQuantidade}
+				idConsumo={consumoId}
+//				mensagem={message}	
 			>
 
 
@@ -75,4 +75,4 @@ function Tarefa({ data, deleteCategoria, renameCategoria, tarefaId }) {
 	);
 }
 
-export default Tarefa;
+export default Consumo;

@@ -1,4 +1,4 @@
-.Tarefa-section{
+.Consumo-section{
     border: 1px solid;
     border-radius: 0.5rem;
     border-color: #90d3ff;
@@ -12,34 +12,34 @@
     justify-content: space-between  ;
     
 }
-.Tarefa-titulo{
+.Consumo-titulo{
     margin-left: 1rem;
     display: flex;
 }
-.Tarefa-amount{
+.Consumo-amount{
     margin-top: 0.35rem;
     margin-left: 0.3rem;
 }
-.Tarefa-date{
+.Consumo-date{
     margin-top: -0.8rem;
     margin-left: 0.95rem; 
 }
-.Tarefa-buttons{
+.Consumo-buttons{
    margin-top: 0.8rem;
    margin-right: 1rem;
 }
-.Tarefa-description{
+.Consumo-description{
    font-size: 1rem; 
 }
 .dialog-style{
     background-color: #1B262C;
     color: #BBE1FA;
   }
-  .Tarefa-dialog-buttons{
+  .Consumo-dialog-buttons{
     margin-left: 8rem;
     margin-top: 1rem;
   }
 
-.Tarefa-done{
+.Consumo-done{
     text-decoration:line-through ;
 }

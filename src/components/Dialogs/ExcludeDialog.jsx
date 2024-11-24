@@ -31,7 +31,7 @@ function ExcludeDialog(props) {
 						color="fourth"
 						variant="outlined"
 						onClick={() => {
-							props.deleteCategoria()
+						props.deleteConsumo(props.idConsumo)
 							props.closeDialog();
 						}}
 					>

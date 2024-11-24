@@ -10,7 +10,7 @@ import {
 import "./RenameDialog.css";
 
 function RenameDialog(props) {
-	const [nome, setNome] = useState("");
+	const [quantidade, setQuantidade] = useState(props.quantidade);
 	const valoresQuantidade = Array.from({ length: 10 }, (_, i) => i + 1);
 
 
@@ -58,9 +58,9 @@ function RenameDialog(props) {
     					}
 					}}
 					onChange={(event) => {
-						setNome(event.target.value);
+						setQuantidade(event.target.value);
 					}}
-					value={nome}
+					value={quantidade}
 					select
 					focused
 				>	
@@ -72,7 +72,7 @@ function RenameDialog(props) {
 						color="fourth"
 						onClick={() => {
 							props.closeDialog();
-							setNome("");
+							//setNome("");
 						}}
 					>
 						Cancelar
@@ -81,12 +81,13 @@ function RenameDialog(props) {
 						color="fourth"
 						variant="outlined"
 						onClick={() => {
-							props.renameCategoria()
+							props.changeQuantidade(quantidade,props.idConsumo)
 
 							props.closeDialog();
 
+							setQuantidade(props.quantidade)
 
-							setNome("");
+//							setQuantidade(0);
 						}}
 					>
 						Atualizar

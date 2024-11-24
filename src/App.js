@@ -5,21 +5,18 @@ import { ThemeProvider, Snackbar, Alert } from "@mui/material";
 import Formularios from "./components/Formularios";
 import theme from "./assets/themes/theme.js";
 import {
-	listaCategorias,
+	listaAcomodacoes,
 	listaProdutos,
 	buscarDados,
-	criarCategoria,
-	criarTarefa,
-	excluirCategoria,
-	excluirTarefa,
-	renomearCategoria,
-	mudarStatus,
-} from "./axios/actions.js";
+	criarConsumo,
+	excluirConsumo,
+	alterarQuantidade,
+} from "./backend/actions.js";
 
 function App() {
 	//const [dados,setDados] = useState("")
-	const [categorias, setCategorias] = useState([]);
-	const [nomesCategorias, setNomesCategorias] = useState([]);
+	const [acomodacoes, setAcomodacoes] = useState([]);
+	const [numerosAcomodacoes, setNumerosAcomodacoes] = useState([]);
 	const [nomesProdutos, setNomesProdutos] = useState([]);
 	const [mensagem, setMensagem] = useState({
 		open: false,
@@ -31,56 +28,39 @@ function App() {
 		},
 	});
 
-	async function listaNomesCategorias() {
-		var dados = await listaCategorias();
+	async function listaNumerosAcomodacoes() {
+		var dados = await listaAcomodacoes();
 
 		var lista = [];
 		for (var c = 0; c < dados.length; c++) {
-			lista.push(dados[c].name);
+			lista.push(dados[c].numero);
 		}
 		return lista;
 	}
-	async function listaNomesProdutos() {
-		var dados = await listaProdutos();
-
-		var lista = [];
-		for (var c = 0; c < dados.length; c++) {
-			lista.push(dados[c].name);
-		}
-		return lista;
-	}
+	
 
 	useEffect(() => {
 		const atualizarDados = async () => {
-			setCategorias(await buscarDados());
+			setAcomodacoes(await buscarDados());
 
-			setNomesCategorias(await listaNomesCategorias());
-			setNomesProdutos(await listaNomesProdutos())
+			setNumerosAcomodacoes(await listaNumerosAcomodacoes());
+			setNomesProdutos(await listaProdutos())
 		};
 
 		atualizarDados();
 	}, [mensagem]);
 
-	async function adicionarCategoria(nome) {
-		setMensagem(await criarCategoria(nome));
+	async function adicionarConsumo(nome, acomodacao) {
+		setMensagem(await criarConsumo(nome, acomodacao));
 	}
 
-	async function adicionarTarefa(nome, categoriaEscolhida) {
-		setMensagem(await criarTarefa(nome, categoriaEscolhida));
+	async function apagarConsumo(idConsumo) {
+		setMensagem(await excluirConsumo(idConsumo));
 	}
-
-	async function apagarCategoria(id) {
-		setMensagem(await excluirCategoria(id));
+	async function changeQuantidade(id, novaQuantidade) {
+		setMensagem(await alterarQuantidade(id, novaQuantidade));
 	}
-	async function apagarTarefa(idTarefa) {
-		setMensagem(await excluirTarefa(idTarefa));
-	}
-	async function renameCategoria(id, novoNome) {
-		setMensagem(await renomearCategoria(id, novoNome));
-	}
-	async function changeStatus(idTarefa) {
-		setMensagem(await mudarStatus(idTarefa));
-	}
+	
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -90,21 +70,18 @@ function App() {
 				</header>
 				<section>
 					<Formularios
-						nomesCategorias={nomesCategorias}
+						numerosAcomodacoes={numerosAcomodacoes}
 						nomesProdutos={nomesProdutos}
-						data={categorias}
-						addCategoria={adicionarCategoria}
-						addTarefa={adicionarTarefa}
+						data={acomodacoes}
+						addConsumo={adicionarConsumo}
 					/>
 				</section>
 				<main className="App-main">
-					{categorias.map((categoria) => (
+					{acomodacoes.map((acomodacao) => (
 						<Lista
-							data={categoria}
-							deleteCategoria={apagarCategoria}
-							deleteTarefa={apagarTarefa}
-							renameCategoria={renameCategoria}
-							changeStatus={changeStatus}
+							data={acomodacao}
+							deleteConsumo={apagarConsumo}
+							changeQuantidade={changeQuantidade}
 							mensagem={mensagem}
 						/>
 					))}

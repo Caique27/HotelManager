@@ -4,15 +4,13 @@ import { Fab, TextField, Select, MenuItem, Tooltip } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 function Formularios(props) {
-	const [categoriaEscolhida, setCategoriaEscolhida] = useState("");
+	const [acomodacaoEscolhida, setAcomodacaoEscolhida] = useState("");
 	const [produtoEscolhido, setProdutoEscolhido] = useState("");
 
-	function enviarTarefa(nome, categoriaEscolhida) {
-		props.addTarefa(nome, categoriaEscolhida);
+	function enviarConsumo(id, acomodacaoEscolhida) {
+		props.addConsumo(id, acomodacaoEscolhida);
 	}
-	function enviarCategoria(nome) {
-		props.addCategoria(nome);
-	}
+	
 	return (
 		<section className="Formularios-section">
 			<form className="Formularios-form">
@@ -63,7 +61,7 @@ function Formularios(props) {
 					focused
 				>
 					{props.nomesProdutos.map((produto) => (
-						<MenuItem value={produto}>{produto}</MenuItem>
+						<MenuItem value={produto}>{produto.nome}</MenuItem>
 				))}
 				</TextField>
 				<TextField
@@ -101,17 +99,17 @@ function Formularios(props) {
       						color: 'white', // Set the text color here
     					},
 					}}
-					value={categoriaEscolhida}
+					value={acomodacaoEscolhida}
 					label="Acomodação"
 					variant="outlined"
 					onChange={(event) => {
-						setCategoriaEscolhida(event.target.value);
+						setAcomodacaoEscolhida(event.target.value);
 					}}
 					select
 					focused
 
 				>
-					{props.nomesCategorias.map((categoria) => (
+					{props.numerosAcomodacoes.map((categoria) => (
 						<MenuItem value={categoria}>{categoria}</MenuItem>
 					))}
 				</TextField>
@@ -121,7 +119,9 @@ function Formularios(props) {
 						color="fourth"
 						aria-label="add"
 						onClick={(event) => {
-							enviarTarefa('nomeproduto', categoriaEscolhida);
+							enviarConsumo(produtoEscolhido.id, acomodacaoEscolhida);
+							setProdutoEscolhido('')
+							setAcomodacaoEscolhida('')
 							event.preventDefault();
 						}}
 					>
