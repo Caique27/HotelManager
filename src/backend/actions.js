@@ -1,8 +1,13 @@
 import axios from "axios"
 
 async function query(queryString){
-  const queryResponse = await axios.post(process.env.API_URL,{
+  console.log(process.env.API_URL)
+  const queryResponse = await axios.post("https://f0esm5kym1.execute-api.us-east-1.amazonaws.com/default/postgre",{
     query:queryString
+  },{
+    headers:{
+      'Content-Type':"application/json"
+    }
   })
   return queryResponse.data
 }
